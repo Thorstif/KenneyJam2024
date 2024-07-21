@@ -52,6 +52,4 @@ public class AirHockeyRules : MonoBehaviour
         puck.transform.localPosition = startingPosition;
         puckRb.velocity = Vector3.zero;
     }
-
-    
 }
