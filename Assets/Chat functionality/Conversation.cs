@@ -15,6 +15,8 @@ public class Conversation : MonoBehaviour
     private bool playerNear = false;
     private bool dialogPlaying = false;
 
+    public string flagToSet;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -69,6 +71,7 @@ public class Conversation : MonoBehaviour
         if (currentDialogIndex >= dialogs.Length)
         {
             UnlockPlayerMovement();
+            GameProgressManager.Instance.SetFlag(flagToSet, true);
             Destroy(this);
             return;
         }
