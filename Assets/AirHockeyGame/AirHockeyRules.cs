@@ -5,7 +5,7 @@ public class AirHockeyRules : MonoBehaviour
 {
     float timer = 0;
 
-    public float gameEndTimer = 60;
+    public float gameEndTimer = 30;
     public GameObject puck;
 
     private Vector3 startingPosition;
@@ -26,7 +26,8 @@ public class AirHockeyRules : MonoBehaviour
 
         if(timer > gameEndTimer)
         {
-            //game end TODO
+            GameSceneManager.Instance.LoadScene("Arcade inside");
+            GameProgressManager.Instance.SetFlag("playedGame", true);
         }
     }
 

@@ -6,7 +6,7 @@ public class GameProgressManager : MonoBehaviour
 {
     public static GameProgressManager Instance { get; private set; }
 
-    private Dictionary<ProgressFlag, bool> progressFlags = new Dictionary<ProgressFlag, bool>();
+    private Dictionary<string, bool> progressFlags = new Dictionary<string, bool>();
 
     private void Awake()
     {
@@ -15,7 +15,6 @@ public class GameProgressManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            InitializeFlags();
         }
         else
         {
@@ -23,29 +22,21 @@ public class GameProgressManager : MonoBehaviour
         }
     }
 
-    private void InitializeFlags()
-    {
-        // Initialize all flags to false
-        foreach (ProgressFlag flag in System.Enum.GetValues(typeof(ProgressFlag)))
-        {
-            progressFlags[flag] = false;
-        }
-    }
 
-    public void SetFlag(ProgressFlag flag, bool value)
+    public void SetFlag(string flag, bool value)
     {
         progressFlags[flag] = value;
     }
 
-    public bool GetFlag(ProgressFlag flag)
+    public bool GetFlag(string flag)
     {
         return progressFlags.TryGetValue(flag, out bool value) ? value : false;
     }
 }
 
-public enum ProgressFlag
-{
-    TalkedToFrank,
-    ExitedLostWoods,
-    DeliveredPizza
-}
+// public enum ProgressFlag
+// {
+//     TalkedToFrank,
+//     ExitedLostWoods,
+//     DeliveredPizza
+// }
